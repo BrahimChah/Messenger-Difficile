@@ -1,0 +1,643 @@
+//Importations, configuration des couleurs
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+    --white : #ffffff;
+    --light-blue : #a5abb2; 
+    --blue : #0176ff;
+    --light-gray : #9a9a9a;
+    --medium-gray : #404244; 
+    --dark-gray : #2d3238; 
+    --light-black : #2f2a30;; 
+    --dark-black : #29242a;
+    --green : rgb(32, 212, 32); 
+}
+
+// Les sections sont flexibles, les unes à côté des autres
+body {
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--light-gray);
+    display: flex;
+}
+
+//Les éléments spécifiques au PC doivent disparaitre en mode mobile.
+.pc {
+    display: block;
+}
+
+.mobile {
+    display: none;
+}
+
+//Section 1 : La barre de navigation à l'extrémité gauche.
+.section1 {
+    background-color: var(--dark-black); 
+    width: 25%;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.icons { 
+    font-size: 1.5em;
+    color: var(--light-blue);
+    width: 100%;
+    padding: 40% 0%;
+    transition: 200ms;
+}
+
+.icons:hover {//Icônes de navigations qui s'illuminent en hover.
+    color: var(--white);
+    transition: 200ms;
+}
+
+.icons-active { //Une des icônes est bleue, elle représente la page où l'on se situe.
+    color: var(--blue);   
+}
+
+.blue-point { //Petit point en dessous de l'icône bleue.
+    display: block;
+    margin-bottom: -30px;
+    margin-top: -6px;
+    font-weight: 600;
+    font-size: 1.5em;
+}
+
+.icons-active:hover { //Lorsque l'on survole l'icône bleue, elle doit rester bleue et ne pas s'illuminer
+    color: var(--blue);
+}
+
+#logo { //Logo tout en haut à gauche
+    padding-top: 30%;
+    transition: 400ms;
+}
+
+#logo:hover { //Effet d'animation sur le logo
+    transform: rotate(45deg);
+    transition: 400ms;
+}
+
+// Section 2 : Configuration générale
+.section2 { //La partie de la section 2 contenant des cartes peut scroller
+    background-color: var(--light-black); 
+    width: 125%;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.section2::-webkit-scrollbar { //Compatibilité chrome pour l'ascenceur du scroll
+    display: none;
+}
+
+//Section 2 : zone titre
+h1 { //Titre chats
+    color: var(--white);
+    margin: 3%;
+    font-size: 1.4em;
+}
+
+//Section 2 : zone recherche
+form { //Formulaire contenant la zone de recherche
+    text-align: center;
+}
+
+.submit { //Zone de recherche : Bouton rechercher en forme de loop
+    background-color: var(--dark-gray);
+    border-style: none;
+    color: var(--light-gray);
+    padding-top : 3%;
+    padding-bottom: 3%;
+    padding-left: 2%;
+    padding-right: 4%;
+    border-radius: 0px 5px 5px 0px;        
+}
+
+.submit:hover { //La loupe s'ilumine en hover
+    color: var(--white); 
+}
+
+.search { //Input de saisie de texte pour la recherche
+    width: 85%;
+    background-color: var(--dark-gray);
+    border-style: none;
+    color: var(--light-gray);
+    padding: 3% 4%;
+    margin-right: -2%;
+    margin-top: 1%;
+    margin-bottom: 6%;
+    border-radius: 5px 0px 0px 5px;
+}
+
+//Section 2 : Zone des photos les unes à côté des autres
+figure { //Element comportant une photo
+    margin: 0;
+}
+
+figcaption { //Legende des photos
+    font-size: 0.7em;
+    font-weight: 400;
+}
+
+.figures { //Configuration des petites photos de présentations : div générale
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.photo { //Dimension des photos et effet d'illumination et d'agrandissement en hover
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: 200ms;
+}
+
+.photo:hover {
+    filter: brightness(1.3);
+    scale: 1.1;
+    transition: 200ms;
+}
+
+.cards { //Série de cartes en dessous des photos, scrollable : div générale
+    height: 550px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.cards::-webkit-scrollbar { //Compabilité chrome
+    display: none;
+}
+
+.card { // Configuration individuelle des cartes et l'effet d'animation en hover
+    font-size: 0.82em;
+    font-weight: 400;
+    background: var(--dark-black);
+    margin: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4% 3%;
+    border-radius: 5px;
+    transition: 200ms;
+}
+
+.card:hover {
+    transition: 200ms;
+    background: var(--dark-gray);
+}
+
+.card-content { //Contenu des cartes : marges et taille
+    padding-left: 3%;
+    width: 100%;
+}
+
+.card-head { //En-tête de la carte contenant le titre et l'heure
+    display: flex; 
+    justify-content: space-between;
+}
+
+.name { //Le titre de la carte est écrit en blanc contrairement à l'heure
+    color: var(--white);
+}
+
+.pastille-card { //Petite pastille bleue indiquant le nombre de message en attente
+    background-color: var(--blue);
+    width: 15px;
+    height: 16px;
+    font-size: 0.6em;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: 50%;
+    margin-left: 100%;
+    margin-top: -6%;
+}
+
+//Section 3 : configuration générale
+.section3 {
+    background-color: var(--dark-black); 
+    width: 256%;
+    
+}
+
+//Section 3 : en-ête du tchat comportant une carte et des commandes juste à côté
+.chat-head {
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--medium-gray);
+    padding: 3% 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    background-color: var(--dark-black);
+}
+
+.chat-card { //carte de l'enête 
+    font-size: 0.82em;
+    font-weight: 400;
+    background: var(--dark-black);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: 200ms;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-subtitle { //Sous titre de la carte, elle doit tenir en longueur
+    width: 120%;
+}
+
+.chat-icons { // Trois boutons de commandes de la barre : div générale
+    text-decoration: none;
+    display: flex;
+    gap: 30px;
+}
+
+.chat-icon { //Chaque bouton s'illumine en hover
+    color: var(--light-gray);
+    padding: 2%;
+    transition: 200ms;
+}
+
+.chat-icon:hover {
+    color: var(--white);
+    transition: 200ms;
+} 
+
+.chat-bubbles { //Bulle de tchat accompagné de photos : div générale scrolable
+    margin-top: -1%;
+    z-index: 0;
+    position: relative;
+    height: 600px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.chat-bubbles::-webkit-scrollbar { //Compatibilité Chrome
+    display: none;
+}
+
+.bubble-left, .bubble-right { //Les éléments de bulles 
+    display: flex;
+    align-items: flex-end;
+}
+
+.bubble-left .bubble-text, .bubble-right .bubble-text { //Le contenu textuel de toutes les bulles
+    width: 40%;
+    margin: 1%;
+    font-size: 0.85em;
+    padding: 1% 2%;
+    border-radius: 5px;
+}
+
+.bubble-time { //Heure qui apparait dans les bulles
+    font-size: 0.85em;
+    color: var(--light-gray);
+}
+
+.bubble-menu { //L'icône des trois points qui accompagne les bulles en guise de menu
+    align-self: center;
+}
+
+.bubble-icon { //La taille des icones
+    font-size: 0.6em;
+}
+
+    //On distingue les bulles gauches et droites qui n'ont pas la même couleur et marges
+.bubble-left { //Configuration des bules gauches
+    margin-left: 7%;
+}
+
+.bubble-left .bubble-text{ 
+    background-color: var(--dark-gray);
+}
+
+.bubble-left .bubble-time {
+    font-size: 0.9em;
+    color: var(--light-gray);
+}
+
+.bubble-first { //Particularité de la première bulle : elle est coupée
+    height: 5%;
+}
+
+.bubble-first .bubble-text{ 
+    border-radius: 0px 0px 5px 5px;
+    margin-top: 0;    
+}
+
+.photo-none { //On place une photo invisible pour respecter l'alignement de la bullle coupée
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+}
+
+.bubble-right { //configuration des bulles droites
+    justify-content: flex-end;
+    margin-right: 7%;
+    color: var(--white);
+}
+
+.bubble-right .bubble-text{
+    background-color: var(--blue);
+}
+
+.bubble-right .bubble-time {
+    font-size: 0.9em;
+    color: var(--light-blue);
+}
+
+//Section 3 : Zone de saisie de texte
+
+.type-zone { //Div générale
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4% 6%;
+    background-color: var(--dark-black);
+}
+
+.type-input-zone { //Input de saisie de texte
+    width: 80%;
+}
+
+.type-input {
+    background-color: var(--dark-black);
+    border-style: none;
+    color: var(--light-blue);
+    font-size: 1em;
+    width: 80%;
+    padding: 2%;
+}
+
+.type-icons { //Les icônes qui représente les boutons de commande : div générale.
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.type-icon { //Configuration de chaque icône, elles s'illuminent.
+    color: var(--light-gray);
+    transition: 200ms;
+}
+
+.type-icon:hover {
+    color: var(--white);
+    transition: 200ms;
+}
+
+.send { //Particularité du bouton envoyer, sa pastille s'illumine en hover.
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 200ms;
+}
+
+.send:hover{
+    filter: brightness(1.2);
+    transition: 200ms;
+}
+
+.send i { //L'icone d'envoyer est blanche contrairement aux autres
+    color: var(--white);
+}
+
+//Section 4 : configuration générale
+.section4 {
+    background-color: var(--dark-black); 
+    width: 95%;
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: var(--medium-gray);
+}
+
+//Section 4 : boutons de commande tout en haut, en en-tête
+.section4-head {
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 6%;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 8% 5%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--medium-gray);
+}
+
+.section4-head div { //L'entête se subdivise en deux divs comportant chacune un bouton
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.section4-head div a { //Les liens de commande s'illumine quand on les survole
+    transition: 200ms;
+    text-decoration: none;
+    color: var(--light-gray);
+}
+
+.section4-head div a:hover {
+    color : var(--white);
+    transition: 200ms;
+}
+
+//Section 4 : partie de la grande carte
+.section4-card {
+    text-align: center;
+    padding: 10%;
+}
+
+.section4-photo { //Photo de la carte qui s'anime en hover
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    margin-top: 2%;
+    transition: 200ms;
+}
+
+.section4-photo:hover {
+    scale: 1.2;
+    filter: brightness(1.2);
+    transition: 200ms;
+}
+
+.section4-name { //Titre de la carte
+    color: var(--white);
+    font-size: 1em;
+    font-weight: 600;
+    margin: 6% 0% 4% 0%;
+}
+
+//Section 4 : partie des deux boutons
+.section4-btns { //Configuration des deux boutons : div générale
+    background-color: var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+}
+
+.section4-btn1, .section4-btn2 {
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 3% 6%;
+    margin: 2% 2%;
+    border-radius: 5px;
+}
+
+.section4-btn1 { //Configuration du bouton 1 qui s'anime en hover
+    color : var(--white);
+    background-color: var(--dark-black);
+    width: 50%;
+    text-align: center;
+    transition: 200ms;
+}
+
+.section4-btn1:hover {
+    background-color: var(--light-black);
+    transition: 200ms;
+}
+
+.section4-btn2 { //Configuration du bouton 2 qui lui aussi s'anime.
+    color : var(--light-gray);
+    width: 50%;
+    text-align: center;
+    transition: 200ms;
+}
+
+.section4-btn2:hover {
+    background-color: var(--light-black);
+    color: var(--white);
+    transition: 200ms;
+}
+
+//Section 4 : Partie des cartes 
+.s4cards { //La partie des cartes est scrollable : div générale
+    height: 350px;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.s4cards::-webkit-scrollbar { //Compatibilité chrome
+    display: none;
+}
+
+.s4card { //Configuration individuelle des cartes, elle s'animent en survol.
+    font-size: 0.82em;
+    font-weight: 400;
+    background: var(--dark-black);
+    margin: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4% 2%;
+    border-radius: 5px;
+    transition: 200ms;
+}
+
+.s4card:hover {
+    transition: 200ms;
+    background: var(--dark-gray);
+}
+
+.s4card-border { //Legère bordure pour chaque carte
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: var(--medium-gray);
+}
+
+.pastille-online { //Petite pastille verte "en ligne"
+    background-color: var(--green);
+    width: 15px;
+    height: 10px;
+    position: relative;
+    border-radius: 50%;
+    right: 10px;
+    margin-top: 24px;
+    border-style: solid;
+    border-color: var(--dark-black);
+}
+
+.pastille-offline { //Pastille invisible pour respecter l'harmonie des marges
+    width: 25px;
+    height: 10px;
+    margin-top: 30px;
+    position: relative;
+}
+
+//En mode mobile :
+@media screen and (max-width : 1100px) { 
+
+    .pc { //Les éléments de PC disparaissent pour laisser places aux éléments mobiles
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    //Les section 1 et 2 disparaissent tout simplement
+    .section1 { 
+        display: none;
+    }
+    .section2 {
+        display: none;
+    }
+
+    //Section 3 : En-tête : La photo est remplacée par un chevron gauche qui s'illumine en hover
+    .chevron-mobile {
+        text-decoration: none;
+        color: var(--light-gray);
+        margin-right: 10%;
+        transition: 200ms;
+    }
+
+    .chevron-mobile:hover {
+        color: var(--white);
+        transition: 200ms;
+    }
+
+    .name { //Modification de la taille du titre de l'en-tête
+        width: 120%;
+        font-weight: 600;
+    }
+
+    .card-content {  //Alimnement au centre du titre et du texte l'entête
+        padding-left: 0;
+        margin-left: -25%;
+        text-align: center;
+    }
+
+    //Section 3 : dimension des bulles
+    .bubble-left .bubble-text, .bubble-right .bubble-text {
+        width: 62%;
+        margin: 6%;
+    }
+
+    //Section 3 : icônes de la barre de saisie de texte
+    .type-icons {
+        width: 40%;
+        font-size: 1.2em;
+    }
+
+    // La section 4 disparait tout simplement
+    .section4 {
+        display: none;
+    }
+    
+}
